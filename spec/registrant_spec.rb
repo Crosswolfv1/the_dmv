@@ -20,7 +20,7 @@ RSpec.describe Registrant do
   end
 
   describe '#permit?' do
-    xit 'has a permit?' do
+    it 'has a permit?' do
       expect(@registrant_1.permit?).to eq(true)
       expect(@registrant_2.permit?).to eq(false)
     end
