@@ -22,7 +22,7 @@ class Facility
       vehicle.registration_date = Date.today
       @registered_vehicles << vehicle
     else
-      return 'This facility cannot register vehicles'
+      return false
     end
   end
 
@@ -46,4 +46,11 @@ class Facility
       false
     end
   end
+
+  def administer_road_test(person)
+    if @services.include?('Road Test') == true && person.license_data[:written] == true 
+      person.license_data[:license] =  true
+    end
+  end
+
 end

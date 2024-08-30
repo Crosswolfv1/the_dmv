@@ -62,7 +62,7 @@ RSpec.describe Facility do
     end
 
     it 'can fail to register a vehicle' do
-      expect(@facility.register_vehicle(@cruz)).to eq('This facility cannot register vehicles')
+      expect(@facility.register_vehicle(@cruz)).to eq false
     end
 
     it 'sets a plate type' do
