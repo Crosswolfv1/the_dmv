@@ -57,9 +57,10 @@ class Facility
 
   def renew_drivers_license(person)
     if @services.include?('Renew License') == true && person.license_data[:license] == true 
-      person.license_data[:renew] = true
+      person.license_data[:renewed] = true
     else
       false
     end
+  end
 
 end
