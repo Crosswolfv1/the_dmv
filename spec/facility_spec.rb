@@ -15,6 +15,7 @@ RSpec.describe Facility do
       expect(@facility.phone).to eq('(720) 865-4600')
       expect(@facility.services).to eq([])
       expect(@facility.registered_vehicles).to eq([])
+      expect(@facility.collected_fees).to eq(0)
     end
   end
 
@@ -25,6 +26,22 @@ RSpec.describe Facility do
       @facility.add_service('Renew Drivers License')
       @facility.add_service('Vehicle Registration')
       expect(@facility.services).to eq(['New Drivers License', 'Renew Drivers License', 'Vehicle Registration'])
+    end
+  end
+
+  describe '#collect fees' do
+    it 'can collect fees' do
+      @facility.collect_fee(@cruz)
+      expect(@facility.collected_fees).to eq(100)
+    end
+
+    it 'can collect fees multiple times' do
+      @facility.collect_fee(@cruz)
+      expect(@facility.collected_fees).to eq(100)
+      @facility.collect_fee(@camaro)
+      expect(@facility.collected_fees).to eq(125)
+      @facility.collect_fee(@bolt)
+      expect(@facility.collected_fees).to eq(325)
     end
   end
 
@@ -44,5 +61,18 @@ RSpec.describe Facility do
     it 'can fail to register a vehicle' do
       expect(@facility.register_vehicle(@cruz)).to eq('This facility cannot register vehicles')
     end
+
+    it 'sets a plate type' do
+      @facility.add_service("Vehicle Registration")
+      @facility.register_vehicle(@cruz)
+      expect(@cruz.plate_type).to eq(:regular)
+      @facility.register_vehicle(@bolt)
+      expect(@bolt.plate_type).to eq(:ev)
+      @facility.register_vehicle(@camaro)
+      expect(@camaro.plate_type).to eq(:antique)
+
+    end
   end
+
+
 end
