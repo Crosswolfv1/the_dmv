@@ -30,6 +30,7 @@ RSpec.describe Facility do
 
   describe '#register vehicle' do
     it 'can register a vehicle' do
+      @facility.add_service("Vehicle Registration")
       @facility.register_vehicle(@cruz)
       expect(@cruz.registration_date).to be_an_instance_of(Date)
       expect(@facility.registered_vehicles.count).to eq(1)
@@ -38,6 +39,10 @@ RSpec.describe Facility do
       @facility.register_vehicle(@camaro)
       expect(@camaro.registration_date).to be_an_instance_of(Date)
       expect(@facility.registered_vehicles.count).to eq(3)
+    end
+
+    it 'can fail to register a vehicle' do
+      expect(@facility.register_vehicle(@cruz)).to eq('This facility cannot register vehicles')
     end
   end
 end
