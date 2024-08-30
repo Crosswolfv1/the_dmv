@@ -6,6 +6,9 @@ RSpec.describe Facility do
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
     @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
+    @registrant_1 = Registrant.new('Bruce', 18, true )
+    @registrant_2 = Registrant.new('Penny', 16 )
+    @registrant_3 = Registrant.new('Tucker', 15 )
   end
   describe '#initialize' do
     it 'can initialize' do
@@ -74,5 +77,29 @@ RSpec.describe Facility do
     end
   end
 
+  describe '#administer written test' do
+    it 'can give a written a test' do
+      @facility.administer_written_test(@registrant_1)
+      expect(@registrant_1.license_data[:written]).to eq false
+      @facility.add_service('Written Test')
+      @facility.administer_written_test(@registrant_1)
+      expect(@registrant_1.license_data[:written]).to eq true
+    end
+
+    it 'can differentiate based on age' do
+      @facility.add_service('Written Test')
+      @facility.administer_written_test(@registrant_3)
+      expect(@registrant_3.license_data[:written]).to eq false
+    end
+
+    it 'can differentiate based on permit?' do
+      @facility.add_service('Written Test')
+      @facility.administer_written_test(@registrant_2)
+      expect(@registrant_2.license_data[:written]).to eq false
+      @registrant_2.earn_permit
+      @facility.administer_written_test(@registrant_2)
+      expect(@registrant_2.license_data[:written]).to eq true
+    end
+  end
 
 end
