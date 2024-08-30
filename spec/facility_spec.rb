@@ -62,7 +62,7 @@ RSpec.describe Facility do
     end
 
     it 'can fail to register a vehicle' do
-      expect(@facility.register_vehicle(@cruz)).to eq('This facility cannot register vehicles')
+      expect(@facility.register_vehicle(@cruz)).to eq false
     end
 
     it 'sets a plate type' do
@@ -99,6 +99,18 @@ RSpec.describe Facility do
       @registrant_2.earn_permit
       @facility.administer_written_test(@registrant_2)
       expect(@registrant_2.license_data[:written]).to eq true
+    end
+  end
+
+  describe '#administer road test' do
+    it 'can give a road test' do
+      @facility.administer_road_test(@registrant_1)
+      expect(@registrant_1.license_data[:license]).to eq false
+      @facility.add_service('Written Test')
+      @facility.administer_written_test(@registrant_1)
+      @facility.add_service('Road Test')
+      @facility.administer_road_test(@registrant_1)
+      expect(@registrant_1.license_data[:license]).to eq true
     end
   end
 
