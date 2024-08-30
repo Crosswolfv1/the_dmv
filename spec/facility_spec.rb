@@ -114,4 +114,10 @@ RSpec.describe Facility do
     end
   end
 
+  describe '#renew drivers license'do
+    it 'can renew license' do
+      
+    end
+  end
+
 end
