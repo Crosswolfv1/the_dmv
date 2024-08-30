@@ -53,4 +53,8 @@ class Facility
     end
   end
 
+  def renew_drivers_license(person)
+    
+  end
+
 end
