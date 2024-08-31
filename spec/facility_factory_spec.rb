@@ -24,15 +24,14 @@ RSpec.describe Facility_factory do
 
     it 'can create dmvs from multiple data sources' do
       facilities1 = @facility_factory.create_facilities(@new_york_facilities)
-      expect(facilities1[0].name).to eq()
-      expect(facilities1[1].address).to eq()
-      expect(facilities1[2].phone).to eq()
-
+      facilities = @facility_factory.create_facilities(@colorado_facilities)
+      expect(facilities1[0].name).to eq("HUDSON")
+      expect(facilities1[1].address).to eq("200 E. MAIN STREET ROCHESTER NY 14604")
+      expect(facilities1[2].phone).to eq(nil)
       facilities2 = @facility_factory.create_facilities(@missouri_facilities)
-      expect(facilities2[0].name).to eq()
-      expect(facilities2[1].address).to eq()
-      expect(facilities2[2].phone).to eq()
-
+      expect(facilities2[0].name).to eq("OAKVILLE")
+      expect(facilities2[1].address).to eq("311 S Main Street NEW LONDON MO 63459")
+      expect(facilities2[2].phone).to eq(nil)
     end
   end
 
