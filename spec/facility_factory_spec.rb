@@ -15,7 +15,7 @@ RSpec.describe Facility_factory do
 
   describe '#create dmvs' do
     it 'can create dmvs' do
-      dmvs = @facility_factory.create_dmvs(@colorado_facilities)
+      dmvs = @facility_factory.create_facilities(@colorado_facilities)
       expect(dmvs).to all(be_an_instance_of(Facility))
     end
   end
