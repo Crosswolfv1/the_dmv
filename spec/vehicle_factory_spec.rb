@@ -13,9 +13,9 @@ RSpec.describe Vehicle_factory do
   end
 
   describe '#create vehicle' do
-    xit 'can create vehicles' do
-      @factory.create_vehicles(@wa_ev_registrations)
-      expect(vehicle1).to be_an_instance_of(Vehicle)
+    it 'can create vehicles' do
+      vehicles = @factory.create_vehicles(@wa_ev_registrations)
+      expect(vehicles).to all(be_an_instance_of(Vehicle))
     end
   end
 
