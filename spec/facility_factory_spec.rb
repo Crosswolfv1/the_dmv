@@ -1,22 +1,22 @@
 require './spec/spec_helper'
 
-RSpec.describe Dmv_factory do
+RSpec.describe Facility_factory do
   before(:each) do
-    @dmv_factory = Dmv_factory.new
+    @facility_factory = Facility_factory.new
     @colorado_facilities = DmvDataService.new.co_dmv_office_locations
     @new_york_facilities = DmvDataService.new.ny_dmv_office_locations
     @missouri_facilities = DmvDataService.new.mo_dmv_office_locations
   end
   describe '#initialize' do
     it 'can initialize' do
-      expect(@dmv_factory).to be_an_instance_of(Dmv_factory)
+      expect(@facility_factory).to be_an_instance_of(Facility_factory)
     end       
   end
 
   describe '#create dmvs' do
     it 'can create dmvs' do
-      dmvs = @dmv_factory.create_dmv(@colorado_facilities)
-      expect(dmvs).to all(be_an_instance_of(facility))
+      dmvs = @facility_factory.create_dmvs(@colorado_facilities)
+      expect(dmvs).to all(be_an_instance_of(Facility))
     end
   end
 
