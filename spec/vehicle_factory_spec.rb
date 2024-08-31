@@ -3,7 +3,7 @@ require 'spec_helper'
 
 RSpec.describe Vehicle_factory do
   before(:each) do
-    @factory.Vehicle_factory.new
+    @factory = Vehicle_factory.new
     @wa_ev_registrations = DmvDataService.new.wa_ev_registrations
   end
   describe '#initialize' do
