@@ -2,7 +2,7 @@
 class Facility
   attr_reader :name, :address, :phone, :services
 
-  require 'pry'; binding.pry
+  #require 'pry'; binding.pry
 
   def initialize(facility_info)
     @name = facility_info[:name]
@@ -14,4 +14,7 @@ class Facility
   def add_service(service)
     @services << service
   end
+
+
+  
 end
