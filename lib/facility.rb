@@ -15,15 +15,18 @@ class Facility
 
   def add_service(service)
     @services << service
+    @services
   end
 
   def administer_written_test(registrant)
-    if @services.include?('Written Test')
+    if @services.include?('Written Test') && registrant.permit?
+      registrant.pass_written_test
       true
     else
       false
     end
-  end    
+  end
+
 
   #def plate_type
     #plate

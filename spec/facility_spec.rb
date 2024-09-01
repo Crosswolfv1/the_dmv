@@ -4,12 +4,12 @@ require './lib/registrant'
 RSpec.describe Facility do
   before(:each) do
 
-    registrant_1 = Registrant.new("Bruce", 18, true)
-    registrant_2 = Registrant.new("Penny", 15)
-    registrant_3 = Registrant.new("Tucker", 15)
-    
   @facility_1 = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
   @facility_2 = Facility.new({name: 'DMV Northeast Branch', address: '4685 Peoria Street Suite 101 Denver CO 80239', phone: '(720) 865-4600'})
+
+  registrant_1 = Registrant.new("Bruce", 18, true)
+  registrant_2 = Registrant.new("Penny", 16)
+  registrant_3 = Registrant.new("Tucker", 15)
 
   @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
   @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
@@ -79,7 +79,6 @@ end
     @facility_1.register_vehicle(@bolt)
     @bolt.plate_type
     expect(@bolt.plate_type).to eq(:ev)
-    #require 'pry'; binding.pry
   end
 
   it 'will accurately calculate the collected fees after regiistering vehicles' do
@@ -90,11 +89,26 @@ end
   end
 end
 
-  describe 'facility 2 being empty' do
+  describe '#facility 2 being empty' do
     it 'will return empty/nil/0 values' do
       expect(@facility_2.registered_vehicles).to eq([])
       expect(@facility_2.services).to eq([])
       expect(@facility_2.collected_fees).to eq(0)
     end
   end
+
+
+  describe '#administering a written test' do
+  it 'administers a written test' do
+      registrant_1 = Registrant.new("Bruce", 18, true)
+      registrant_2 = Registrant.new("Penny", 16)
+      registrant_3 = Registrant.new("Tucker", 15)
+        expect(@facility_1.administer_written_test(registrant_1)).to be false
+
+        @facility_1.add_service('Written Test')
+
+        expect(@facility_1.administer_written_test(registrant_1)).to be true
+        require 'pry'; binding.pry
+      end
+    end
 end
