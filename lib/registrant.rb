@@ -28,6 +28,22 @@ attr_reader :name,
        end
     end
 
+    def administer_road_test
+        if earn_permit
+          @license_data[:license] = true
+        else
+          false
+        end
+      end
+
+    def renew_drivers_license
+        if administer_road_test
+            @license_data[:renewed] = true
+        else
+            false
+        end
+    end
+
     #Written Test
 
     # def pass_written_test
