@@ -108,7 +108,31 @@ end
         @facility_1.add_service('Written Test')
 
         expect(@facility_1.administer_written_test(registrant_1)).to be true
-        require 'pry'; binding.pry
       end
     end
+
+    describe '#administering a road test' do
+    it 'administers a road test' do
+      registrant_1 = Registrant.new("Bruce", 18, true)
+
+      @facility_1.add_service('Written Test')
+      @facility_1.add_service('Road Test')
+
+      expect(@facility_1.services).to eq(['Written Test', 'Road Test'])
+      expect(@facility_1.administer_road_test(registrant_1)).to be true
+    end
+  end
+
+    describe '#renewing a license' do
+    it 'can renew a license' do
+      registrant_1 = Registrant.new("Bruce", 18, true)
+      @facility_1.add_service('Written Test')
+      @facility_1.add_service('Road Test')
+      @facility_1.add_service('Renew License')
+
+      expect(@facility_1.services).to eq(['Written Test', 'Road Test', 'Renew License'])
+      expect(@facility_1.renew_drivers_license(registrant_1)).to be true
+      require 'pry'; binding.pry
+    end
+  end
 end
