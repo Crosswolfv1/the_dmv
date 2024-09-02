@@ -13,17 +13,16 @@ class Facility_factory
   end
 
   def address_formatted(facility)
-    [
-      facility[:address_li],
-      facility[:street_address_line_1],
-      facility[:address1],
-      facility[:address__1],
-      facility[:city],
-      facility[:state],
-      facility[:zip],
-      facility[:zip_code],
-      facility[:zipcode],
-    ].compact.join(' ')
+    key_map = {
+      address_line_1: [:address_li, :street_address_line_1, :address1],
+      address_line_2: [:address__1, :street_address_line_2],
+      city: [:city, :locality, :town],
+      state: [:state, :province, :region],
+      zip: [:zip, :zip_code, :zipcode, :postal_code]
+    }
+    address_parts = key_map.map do |_, keys|
+      keys.find { |key| facility[key] }
+    end.map { |key| facility[key] }
+    address_parts.compact.join(' ')
   end
-
 end
