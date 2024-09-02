@@ -16,9 +16,9 @@ class Facility_factory
     key_map = {
       address_line_1: [:address_li, :street_address_line_1, :address1],
       address_line_2: [:address__1, :street_address_line_2],
-      city: [:city, :locality, :town],
-      state: [:state, :province, :region],
-      zip: [:zip, :zip_code, :zipcode, :postal_code]
+      city: [:city],
+      state: [:state],
+      zip: [:zip, :zip_code, :zipcode]
     }
     address_parts = key_map.map do |_, keys|
       keys.find { |key| facility[key] }
