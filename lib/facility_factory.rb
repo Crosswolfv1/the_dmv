@@ -42,4 +42,3 @@ class Facility_factory
 
 end
 
-"vehicle titles, registration, renewals;  VIN inspections"
