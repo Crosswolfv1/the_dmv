@@ -47,5 +47,17 @@ class FacilityFactory
         facilities
     end
 
-    
+    def mis_facilities(source)
+        facilities = []
+        source.each do |data|
+            address = "#{data[:address1]}, #{data[:city]}, #{data[:state]} #{data[:zipcode]}"
+           facility = Facility.new({
+                :name => data[:name],
+                :address => address,
+                :phone => data[:phone]
+            })
+        facilities << facility
+        end 
+        facilities
+    end
 end

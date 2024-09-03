@@ -10,7 +10,7 @@ RSpec.describe FacilityFactory do
         @mis_source = DmvDataService.new.mo_dmv_office_locations
     # facilities.co_facilities(source)
     end  
-    '#describe colorado location attributes' do
+    describe '#colorado location attributes' do
     it 'can count the number of locations in the array' do
        
         expect(@facilities.co_facilities(@co_source).count).to eq(5)
@@ -33,7 +33,7 @@ RSpec.describe FacilityFactory do
     end
 end
 
-    '#describe ny location attributes' do
+    describe '#ny location attributes' do
     it 'can give the name of index 0 in the array' do
 
         expect(@facilities.ny_facilities(@ny_source)[0].name).to eq("HUDSON")
@@ -49,9 +49,31 @@ end
 
     it 'can count the number of locations in the array' do
         expect(@facilities.ny_facilities(@ny_source).count).to eq(172)
-
+    end
     it 'can give the name of the location in index 99 in the array' do
         expect(@facilities.ny_facilities(@ny_source)[99].name).to eq("DELHI")
+    end
+end
+
+    describe '#mis location attributes' do
+    it 'can count the number of locations in the array' do
+        expect(@facilities.mis_facilities(@mis_source).count).to eq(178)
+    end
+
+    it 'can give the name of the location in index 13' do
+        expect(@facilities.mis_facilities(@mis_source)[13].name).to eq("NEVADA")
+    end
+
+    it 'can give the phone number of the last location' do
+        expect(@facilities.mis_facilities(@mis_source).last.phone).to eq("(636) 629-6000")
+    end
+
+    it 'can give the address of the location in index 66' do
+        expect(@facilities.mis_facilities(@mis_source)[66].address).to eq("2000 ROCK ROAD, DE SOTO, MO 63020")
+    end
+
+    it 'can give the name of the location in index 124' do
+        expect(@facilities.mis_facilities(@mis_source)[124].name).to eq("BUFFALO")
     end
 end
 end
