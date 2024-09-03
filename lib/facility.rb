@@ -1,7 +1,7 @@
 
 class Facility
   attr_reader :name, :address, :phone, :services, :registered_vehicles, :permit
-  attr_accessor :collected_fees, :registration_date, :plate, :administer_written_test
+  attr_accessor :collected_fees, :registration_date, :plate, :administer_written_test, :data
                 
 
 
@@ -12,6 +12,7 @@ class Facility
     @services = []
     @registered_vehicles = []
     @collected_fees = 0
+    @data = data
   end
 
   def add_service(service)
