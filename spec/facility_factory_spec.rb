@@ -26,7 +26,7 @@ RSpec.describe Facility_factory do
       facilities1 = @facility_factory.create_facilities(@new_york_facilities)
       facilities = @facility_factory.create_facilities(@colorado_facilities)
       expect(facilities1[0].name).to eq(@new_york_facilities[0][:office_name])
-      expect(facilities1[1].address).to ("301 WEST DOMINICK STREET ROME NY 13440")
+      expect(facilities1[1].address).to eq("301 WEST DOMINICK STREET ROME NY 13440")
       expect(facilities1[2].phone).to eq(@new_york_facilities[2][:public_phone_number])
       facilities2 = @facility_factory.create_facilities(@missouri_facilities)
       expect(facilities2[0].name).to eq("OAKVILLE")
