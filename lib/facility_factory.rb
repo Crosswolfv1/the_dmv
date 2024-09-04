@@ -24,7 +24,9 @@ class Facility_factory
       zip: [:zip, :zip_code, :zipcode]
     }
     address_parts = key_map.map do |_, keys|
-      keys.find { |key| facility[key] }
+      keys.find do |key|
+        facility[key]
+      end
     end
     address_parts = address_parts.map do |key|
       facility[key]
