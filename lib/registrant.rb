@@ -43,12 +43,4 @@ attr_reader :name,
             false
         end
     end
-
-    #Written Test
-
-    # def pass_written_test
-    #     if earn_permit = true
-    #     @license_data[:written] = true
-    #   end
-    # end
 end

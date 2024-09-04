@@ -1,7 +1,7 @@
 
 class Facility
   attr_reader :name, :address, :phone, :services, :registered_vehicles, :permit
-  attr_accessor :collected_fees, :registration_date, :plate, :administer_written_test, :data
+  attr_accessor :collected_fees, :registration_date, :plate, :data
                 
 
 
@@ -44,12 +44,7 @@ class Facility
     end
   end
 
-  #def plate_type
-    #plate
-  #end
-
   def register_vehicle(vehicle)
-    #first need to collect fees. 
       if vehicle.antique?
         @collected_fees += 25
         vehicle.plate_type = :antique
@@ -60,20 +55,9 @@ class Facility
         @collected_fees += 100
         vehicle.plate_type = :regular
       end
-      #depends on vehicle type.
-        #vehicles 25+yrs are $25 (antique) - method antique?
-        #vehicles ev are $200 - method electric_vehicle?
-        #all other vehicles are $100 (regular)
-
-    #add the vehicle to facility registration
-    #administer license plate type
-    #update registration date
+   
       vehicle.registration_date = Date.today
-    # @registered_vehicles << vehicle
-    # @collected_fees += plate_type
-    # vehicle.registration_date = Date.today
+  
       @registered_vehicles << vehicle
   end
-
-
 end
