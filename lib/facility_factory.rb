@@ -25,7 +25,10 @@ class Facility_factory
     }
     address_parts = key_map.map do |_, keys|
       keys.find { |key| facility[key] }
-    end.map { |key| facility[key] }
+    end
+    address_parts = address_parts.map do |key|
+      facility[key]
+    end
     address_parts.compact.join(' ')
   end
 
